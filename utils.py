@@ -1,4 +1,7 @@
 class Node:
+    """_summary_
+    Tree Node for HF Tree
+    """
     def __init__(self, symbol, prob, left = None, right = None):
         self.symbol = symbol
         self.prob = prob
@@ -9,6 +12,14 @@ class Node:
 codes = dict()
 
 def entropy_gain (data, coding, symbols, freq):
+    """_summary_
+
+    Args:
+        data (Initial String): String by user
+        coding (dict): HF Encoded for each char
+        symbols (str): chars in str
+        freq (_type_): Counter of chars in str
+    """
     bc, ac = len(data) * 8, 0
 
     for s in symbols:
@@ -29,10 +40,10 @@ def count_elements(data) -> dict():
     Counts the number of elements 
 
     Args:
-        data (_type_): _description_
+        data (str): Inital string by user
 
     Returns:
-        _type_: _description_ returns a dict with char:count
+        dict:  returns a dict with char:count
     """
     freq = {}
 
@@ -50,11 +61,11 @@ def calculate_code(node, val ="") -> dict():
     """_summary_
     Read the tree from top to bottom and the find the char to add the the HF codes
     Args:
-        node (_type_): _description_
-        val (str, optional): _description_. Defaults to "".
+        node (Node): Node of tree
+        val (str): To calculaate the HF code when traversing. Defaults to "".
 
     Returns:
-        _type_: _description_
+        dict: HF encoded each char
     """
     newVal = val + str(node.code)
 
@@ -69,6 +80,16 @@ def calculate_code(node, val ="") -> dict():
     return codes
 
 def encode_it(data, coding) -> str:
+    """
+    Encoded given str
+    Args:
+        data (str): init string
+        coding (dict): encoded char in str HF
+
+    Returns:
+        str: Encoded str
+    """
+
     out = []
 
     for c in data:
