@@ -2,13 +2,20 @@
 
 import utils as ut
 
-initial_str = "AAAAAAABCCCCCCDDEEEEE"
-frequency = ut.count_elements(initial_str)
-encoded_output = ut.Huffman(frequency, initial_str)
 
 print("-------------------------------------------------")
 print("-------------------------------------------------")
-print("Initial String: ", initial_str)
-print("HF Encoded: ", encoded_output)
+print("Welcome to Huffman Encoder")
+print()
+print("Enter a String of length N and let the magic happen")
+val = input()
 print("-------------------------------------------------")
+print("-------------------------------------------------")
+
+frequency = ut.count_elements(val)
+encoded_output = ut.Huffman(frequency, val)
+
+print("-------------------------------------------------")
+print("Initial String: ", val)
+print("HF Encoded: ", encoded_output)
 print("-------------------------------------------------")
