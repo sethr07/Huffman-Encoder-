@@ -12,7 +12,8 @@ class Node:
 codes = dict()
 
 def entropy_gain (data, coding, symbols, freq):
-    """_summary_
+    """
+    Calculates Entropy between inital str and encoded output. Gives information about the compreession
 
     Args:
         data (Initial String): String by user
@@ -98,15 +99,14 @@ def encode_it(data, coding) -> str:
     out_str = "".join([str(item) for item in out])
     return out_str
 
-def Huffman(freq, ini_str) -> str:
+def huffman(freq, ini_str) -> str:
     symbols = freq.keys()
     probabilites = freq.values()
-    #print(symbols, probabilites)
-
+    
     nodes = []
 
-    for s in symbols:
-        n = Node(s, freq.get(s))
+    for s, p in zip(symbols, probabilites):
+        n = Node(s, p)
         nodes.append(n)
     
     while len(nodes) > 1:
@@ -117,11 +117,11 @@ def Huffman(freq, ini_str) -> str:
         left.code = 0
         right.code = 1
 
-        newNode = Node(left.symbol + right.symbol, left.prob + right.prob, left, right)
+        newnode = Node(left.symbol + right.symbol, left.prob + right.prob, left, right)
         
         nodes.remove(right)
         nodes.remove(left)
-        nodes.append(newNode)
+        nodes.append(newnode)
 
     hf = calculate_code(nodes[0])
     ec = encode_it(ini_str, hf)
@@ -129,6 +129,9 @@ def Huffman(freq, ini_str) -> str:
     
     return ec
 
+
+def decode_HF(int_str: str) -> str:
+    pass
     
 
 
