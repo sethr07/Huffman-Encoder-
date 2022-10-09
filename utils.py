@@ -27,13 +27,14 @@ def entropy_gain (data, coding, symbols, freq):
         count = freq[s]
         ac += count * len(coding[s])
 
-    print("\n")
-    print("-------------------------------------------------")
-    print("-------------------------------------------------")
-    print("Entropy before Compression (bits): ", bc)
-    print("Entropy after Compression (bits): ", ac)
-    print("-------------------------------------------------")
-    print("-------------------------------------------------")
+    #print("\n")
+    #print("-------------------------------------------------")
+    #print("-------------------------------------------------")
+    #print("Entropy before Compression (bits): ", bc)
+    #print("Entropy after Compression (bits): ", ac)
+    #print("-------------------------------------------------")
+    #print("-------------------------------------------------")
+    return bc, ac
 
 
 def count_elements(data) -> dict():
@@ -99,7 +100,7 @@ def encode_it(data, coding) -> str:
     out_str = "".join([str(item) for item in out])
     return out_str
 
-def huffman(freq, ini_str) -> str:
+def huffman(freq, ini_str):
     symbols = freq.keys()
     probabilites = freq.values()
     
@@ -125,9 +126,9 @@ def huffman(freq, ini_str) -> str:
 
     hf = calculate_code(nodes[0])
     ec = encode_it(ini_str, hf)
-    entropy_gain(ini_str, hf,symbols, freq)
+    bsize, asize = entropy_gain(ini_str, hf,symbols, freq)
     
-    return ec
+    return ec, bsize, asize
 
 
 def decode_HF(int_str: str) -> str:
