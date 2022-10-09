@@ -1,14 +1,4 @@
 #!/usr/local/bin/python3
-"""
-Huffman Encoder
-"""
-
-# input is string of size N
-# say if each char in string occupies 8 bit i.e. 8*N bits to transmit string
-# Huffman can reduce this y compressiing 
-
-# Algo:
-# count number of chars in each string
 
 import utils as ut
 
