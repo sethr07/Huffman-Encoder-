@@ -2,18 +2,19 @@
 import utils as ut
 import os
 
-print("-------------------------------------------------")
-print("-------------------------------------------------")
-print("Welcome to Huffman Encoder")
-print()
 
-print("----------------Select----------------------------")
-print("-----------------1. HF with String -------------------------------")
-print("-----------------2. HF with File -------------------------------")
-val = input()
+def mainmenu() -> int:
+    print("-------------------------------------------------")
+    print("-------------------------------------------------")
+    print("Welcome to Huffman Encoder")
+    print()
+    print("----------------Select----------------------------")
+    print("-----------------1. HF with String -------------------------------")
+    print("-----------------2. HF with File -------------------------------")
+    val = input()
+    return int(val)
 
-
-if val == 1:
+def hfstring():
     print("Enter a String of length N and let the magic happen")
     val = input()
     print("-------------------------------------------------")
@@ -31,10 +32,20 @@ if val == 1:
         print("Entropy before Compression (bits): ", size_before)
         print("Entropy after Compression (bits): ", size_after)
         print("-------------------------------------------------")
-elif val == 2:
-    print("Enter a File Name")
-    val = input()
-    
+
+def hfwithfile(infile):
+    pass
+
+key = mainmenu()
+
+if key == 1:
+    hfstring()
+elif key == 2:
+    pass
+else:
+    print("Not supported")
+
+
 
 
 
