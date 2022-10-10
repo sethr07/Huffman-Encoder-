@@ -1,3 +1,6 @@
+from inspect import Attribute
+
+
 class Node:
     """_summary_
     Tree Node for HF Tree
@@ -128,11 +131,30 @@ def huffman(freq, ini_str):
     ec = encode_it(ini_str, hf)
     bsize, asize = entropy_gain(ini_str, hf,symbols, freq)
     
-    return ec, bsize, asize
+    return ec, bsize, asize, nodes[0]
 
 
-def decode_HF(int_str: str) -> str:
-    pass
+def decode_HF(encoded, huffman_tree) -> str:
+
+    tree_head = huffman_tree
+    decoded = []
+
+    for s in encoded:
+        if s == '1':
+            huffman_tree = huffman_tree.right 
+        elif s == '0':
+            huffman_tree = huffman_tree.left
+        
+        try:
+            if huffman_tree.left.symbol == None and huffman_tree.right.symbol == None:
+                pass
+        except AttributeError:
+            decoded.append(huffman_tree.symbol)
+            huffman_tree = tree_head
+    
+    res = "".join([str(item) for item in decoded])
+    return res
+
     
 
 
